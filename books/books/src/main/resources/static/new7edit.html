@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>LIA BOOKS</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Times New Roman;
+      background: url('https://th.bing.com/th/id/OIP.LlZt_wpT08TqW_wMCW6-4wHaHa?cb=iwc1&pid=ImgDet&w=182&h=182&c=7');
+      color: white;
+      margin-top:0px;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height:80px;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+      url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+      color: #ffffff;
+      text-align: center;
+      padding: 30px 20px 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 45px;
+      font-weight: bold;
+      color: #00ffcc;
+      text-shadow: 2px 2px 6px rgba(0, 255, 255, 0.8);
+      margin-bottom: 10px;
+    }
+
+    .nav-links {
+      margin-bottom: 10px;
+    }
+
+    .nav-links a {
+      color: #fff;
+      margin: 0 20px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      color: #00ffcc;
+    }
+
+    .top-right {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .search-bar {
+      background: #222;
+      border: none;
+      padding: 8px;
+      width: 200px;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .top-right a {
+      color: #e5e4e2;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .search-bar:focus {
+      outline: none;
+    }
+
+    .main {
+      display: flex;
+      padding: 20px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .sidebar {
+      position: fixed;
+      width: 180px;
+      height: 510px;
+      background-color: #1f1f1f;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 14px;
+      margin-top: 130px;
+    }
+
+    .sidebar1 {
+      width: 180px;
+      height: 150px;
+      background-color: #1f1f1f;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .sidebar h3, .sidebar h4 {
+      margin-top: 0;
+      font-size: 16px;
+    }
+
+    .sidebar label,
+    select,
+    input {
+      display: block;
+      margin-bottom: 10px;
+      width: 100%;
+      font-size: 14px;
+    }
+
+    .sidebar button {
+      background-color: #8a2be2;
+      border: none;
+      padding: 8px;
+      width: 100%;
+      color: white;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .books {
+      margin-top: 150px;
+      margin-left: 250px;
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .books1{
+      margin-top:150px;
+    }
+
+    .book-card {
+      background-color: #1f1f1f;
+      width: 220px;
+      height: 520px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    }
+
+    .book-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .book-info {
+      padding: 0px;
+      font-size: 20px;
+      margin-left: 10px;
+      margin-bottom: 0%;
+    }
+
+    .book-info h4 {
+      margin: 0;
+      margin-bottom: 0%;
+      margin-top: 0%;
+    }
+
+    .price {
+      color: #00ff99;
+      font-weight: bold;
+      margin-bottom: 0%;
+      margin-top: 2%;
+    }
+
+    .rating {
+      color: gold;
+      margin-bottom: 0%;
+      margin-top: 0%;
+    }
+
+    .stock {
+      color: #00cc66;
+      font-weight: bold;
+      margin-bottom: 0%;
+      margin-top: 2%;
+    }
+
+    .view-btn {
+      margin-top: 0%;
+      display: block;
+      background-color: #8a2be2;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .main {
+        flex-direction: column;
+      }
+
+      .books {
+        margin-left: 0;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">LIA BOOKS</div>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#">Categories</a>
+    <a href="#">Contact Us</a>
+  </div>
+  <div class="top-right">
+    <input class="search-bar" type="text" id="searchInput" placeholder="Search for books..." oninput="searchBooks()">
+    <a href="#">Login</a>
+    <a href="#">Register</a>
+  </div>
+</header>
+
+<div class="main">
+  <div class="sidebar">
+    <h3>Filters</h3>
+    <label>Genre</label>
+    <select id="genreFilter">
+      <option>All Genres</option>
+      <option>Fiction</option>
+      <option>Biography</option>
+      <option>Non-Fiction</option>
+      <option>Self-Help</option>
+    </select>
+
+    <label>Book Type</label>
+    <select id="typeFilter">
+      <option>All Types</option>
+      <option>Physical</option>
+      <option>E-Book</option>
+    </select>
+
+    <label>Price Range</label>
+    <input type="number" id="minPrice" placeholder="Min Price">
+    <input type="number" id="maxPrice" placeholder="Max Price">
+
+    <label>Sort By</label>
+    <select id="sortBy">
+      <option value="title-asc">Title (A-Z)</option>
+      <option value="title-desc">Title (Z-A)</option>
+      <option value="price-asc">Price (Low-High)</option>
+      <option value="price-desc">Price (High-Low)</option>
+    </select>
+
+    <button onclick="applyFilters()">Apply Filters</button>
+    <button onclick="resetFilters()">Reset Filters</button>
+    <button style="background-color: maroon;" onclick="openAddBookForm()">Add Book</button>
+    <button style="background-color: maroon;" onclick="removeBooks()">Remove Book</button>
+  </div>
+
+  <div class="books1 books" id="bookContainer"></div>
+
+  <!-- Add Book Form -->
+  <div id="addBookForm" style="display:none; background-color: #1f1f1f; padding: 20px; border-radius: 10px;">
+    <h3>Add Book</h3>
+    <label>Title</label>
+    <input type="text" id="bookTitle" placeholder="Enter book title" required>
+
+    <label>Category</label>
+    <input type="text" id="bookCategory" placeholder="Enter book category" required>
+
+    <label>Price</label>
+    <input type="number" id="bookPrice" placeholder="Enter book price" required>
+
+    <label>Type (Physical/E-Book)</label>
+    <input type="text" id="bookType" placeholder="Enter book type" required>
+
+    <label>Image URL</label>
+    <input type="url" id="bookImg" placeholder="Enter image URL" required>
+
+    <button onclick="saveBook()">Save Book</button>
+    <button onclick="closeAddBookForm()">Cancel</button>
+  </div>
+</div>
+
+<script>
+  const books = [
+    { title: "Dune", category: "Fiction", img: "https://m.media-amazon.com/images/I/91zbi9M+mKL.jpg", rating: "⭐⭐⭐⭐⭐", price: 9.00, type: "Physical", inStock: true },
+    { title: "Educated", category: "Biography", img: "https://m.media-amazon.com/images/I/81WojUxbbFL.jpg", rating: "⭐⭐⭐⭐⭐", price: 10.20, type: "E-Book", inStock: true },
+    { title: "Steve Jobs", category: "Biography", img: "https://m.media-amazon.com/images/I/81VStYnDGrL.jpg", rating: "⭐⭐⭐⭐", price: 18.00, type: "Physical", inStock: true },
+    { title: "Mockingbird", category: "Fiction", img: "https://m.media-amazon.com/images/I/81gepf1eMqL.jpg", rating: "⭐⭐⭐⭐⭐", price: 11.00, type: "E-Book", inStock: false },
+    { title: "Becoming", category: "Biography", img: "https://m.media-amazon.com/images/I/81h2gWPTYJL.jpg", rating: "⭐⭐⭐⭐", price: 13.50, type: "E-Book", inStock: true },
+    { title: "1984", category: "Fiction", img: "https://m.media-amazon.com/images/I/71kxa1-0mfL.jpg", rating: "⭐⭐⭐⭐⭐", price: 10.00, type: "Physical", inStock: true },
+    { title: "The Great Gatsby", category: "Fiction", img: "https://m.media-amazon.com/images/I/71UypkUjStL.jpg", rating: "⭐⭐⭐⭐", price: 8.50, type: "Physical", inStock: true },
+    { title: "The Alchemist", category: "Fiction", img: "https://m.media-amazon.com/images/I/71aFt4+OTOL.jpg", rating: "⭐⭐⭐⭐⭐", price: 14.00, type: "E-Book", inStock: true },
+    { title: "Sapiens", category: "Non-Fiction", img: "https://m.media-amazon.com/images/I/713jIoMO3UL.jpg", rating: "⭐⭐⭐⭐⭐", price: 12.30, type: "Physical", inStock: true },
+    { title: "Atomic Habits", category: "Self-Help", img: "https://m.media-amazon.com/images/I/91bYsX41DVL.jpg", rating: "⭐⭐⭐⭐⭐", price: 15.60, type: "E-Book", inStock: true },
+    { title: "The Subtle Art ", category: "Self-Help", img: "https://m.media-amazon.com/images/I/71QKQ9mwV7L.jpg", rating: "⭐⭐⭐⭐", price: 11.99, type: "E-Book", inStock: false }
+  ];
+
+  function searchBooks() {
+    const query = document.getElementById("searchInput").value.toLowerCase();
+
+    const filteredBooks = books.filter(book => book.title.toLowerCase().includes(query));
+    renderBooks(filteredBooks);
+  }
+
+  function renderBooks(filteredBooks) {
+    const container = document.getElementById("bookContainer");
+    container.innerHTML = "";
+
+    filteredBooks.forEach(book => {
+      const bookCard = document.createElement("div");
+      bookCard.className = "book-card";
+
+      bookCard.innerHTML = `
+        <img src="${book.img}" alt="${book.title}" />
+        <div class="book-info">
+          <h4>${book.title}</h4>
+          <p>Category: ${book.category}</p>
+          <p class="price">$${book.price}</p>
+          <p class="rating">${book.rating}</p>
+          <p class="stock">${book.inStock ? "In Stock" : "Out of Stock"}</p>
+          <a href="#" class="view-btn">View Details</a>
+        </div>
+      `;
+
+      container.appendChild(bookCard);
+    });
+  }
+
+  function openAddBookForm() {
+    document.getElementById("addBookForm").style.display = "block";
+  }
+
+  function closeAddBookForm() {
+    document.getElementById("addBookForm").style.display = "none";
+  }
+
+  function saveBook() {
+    const title = document.getElementById("bookTitle").value;
+    const category = document.getElementById("bookCategory").value;
+    const price = parseFloat(document.getElementById("bookPrice").value);
+    const type = document.getElementById("bookType").value;
+    const img = document.getElementById("bookImg").value;
+
+    const newBook = {
+      title,
+      category,
+      price,
+      type,
+      img,
+      rating: "⭐⭐⭐⭐",
+      inStock: true
+    };
+
+    books.push(newBook);
+    renderBooks(books);
+    closeAddBookForm();
+  }
+
+  function removeBooks() {
+    const bookTitle = prompt("Enter the title of the book to remove:");
+
+    const bookIndex = books.findIndex(book => book.title.toLowerCase() === bookTitle.toLowerCase());
+
+    if (bookIndex > -1) {
+      books.splice(bookIndex, 1);
+      alert("Book removed successfully!");
+    } else {
+      alert("Book not found.");
+    }
+
+    renderBooks(books);
+  }
+
+  function applyFilters() {
+    const genre = document.getElementById("genreFilter").value;
+    const type = document.getElementById("typeFilter").value;
+    const minPrice = parseFloat(document.getElementById("minPrice").value) || 0;
+    const maxPrice = parseFloat(document.getElementById("maxPrice").value) || Infinity;
+
+    let filteredBooks = books.filter(book => {
+      return (
+              (genre === "All Genres" || book.category === genre) &&
+              (type === "All Types" || book.type === type) &&
+              book.price >= minPrice &&
+              book.price <= maxPrice
+      );
+    });
+
+    renderBooks(filteredBooks);
+  }
+
+  function resetFilters() {
+    document.getElementById("genreFilter").value = "All Genres";
+    document.getElementById("typeFilter").value = "All Types";
+    document.getElementById("minPrice").value = "";
+    document.getElementById("maxPrice").value = "";
+    document.getElementById("sortBy").value = "title-asc";
+    renderBooks(books);
+  }
+
+  renderBooks(books);
+</script>
+
+</body> </html>
