@@ -1,350 +1,197 @@
-<html>
-<head><title>Lia Books</title>
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LIA BOOKS</title>
+  <style>
+    body {
       margin: 0;
-      font-family: Times New Roman;
-      background: url('https://th.bing.com/th/id/OIP.LlZt_wpT08TqW_wMCW6-4wHaHa?cb=iwc1&pid=ImgDet&w=182&h=182&c=7');
-      color: white;
-      margin-top:0px;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('bg-pattern.jpg'); /* Replace with your background image */
+      background-size: cover;
+      color: #fff;
     }
 
     header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-	  height:80px;
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                  url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
-      color: #ffffff;
+      background: #111;
+      padding: 10px 20px;
       text-align: center;
-      padding: 30px 20px 20px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
-      z-index: 1000;
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
 
-    .logo {
-      font-size: 45px;
-      font-weight: bold;
-      color: #00ffcc;
-      text-shadow: 2px 2px 6px rgba(0, 255, 255, 0.8);
-      margin-bottom: 10px;
+    header h1 {
+      font-size: 2.5rem;
+      color: cyan;
+      text-shadow: 0 0 10px cyan;
     }
 
-    .nav-links {
-      margin-bottom: 10px;
-    }
-
-    .nav-links a {
-      color: #fff;
-      margin: 0 20px;
-      text-decoration: none;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .nav-links a:hover {
-      color: #00ffcc;
-    }
-
-    .top-right {
-      position: absolute;
-      top: 20px;
-      right: 20px;
+    nav {
       display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .search-bar {
-      background: #222;
-      border: none;
-      padding: 8px;
-      width: 200px;
-      color: white;
-      border-radius: 5px;
-    }
-
-    .top-right a {
-      color: #e5e4e2;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    .search-bar:focus {
-      outline: none;
-    }
-
-    .main {
-      display: flex;
-      padding: 20px;
+      justify-content: center;
       gap: 20px;
       flex-wrap: wrap;
+      align-items: center;
     }
 
-    .sidebar {
-      position: fixed;
-      width: 180px;
-      height: 510px;
-      background-color: #1f1f1f;
-      padding: 15px;
-      border-radius: 10px;
-      font-size: 14px;
-      margin-top: 130px;
-    }
-
-    .sidebar1 {
-      width: 180px;
-      height: 150px;
-      background-color: #1f1f1f;
-      padding: 15px;
-      border-radius: 10px;
-      font-size: 14px;
-    }
-
-    .sidebar h3, .sidebar h4 {
-      margin-top: 0;
-      font-size: 16px;
-    }
-
-    .sidebar label,
-    select,
-    input {
-      display: block;
-      margin-bottom: 10px;
-      width: 100%;
-      font-size: 14px;
-    }
-
-    .sidebar button {
-      background-color: #8a2be2;
-      border: none;
-      padding: 8px;
-      width: 100%;
-      color: white;
+    nav input {
+      padding: 5px;
       border-radius: 5px;
-      margin-bottom: 10px;
-      font-size: 14px;
     }
 
-    .books {
-      margin-top: 150px;
-      margin-left: 250px;
-      flex: 1;
+    .container {
       display: flex;
+      padding: 20px;
+    }
+
+    .filters {
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      width: 200px;
+      margin-right: 20px;
+    }
+
+    .filters label, .filters select, .filters input {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .book-list {
+      display: flex;
+      gap: 20px;
       flex-wrap: wrap;
-      gap: 15px;
+      justify-content: flex-start;
     }
 
     .book-card {
-      background-color: #1f1f1f;
-      width: 220px;
-      height: 520px;
+      background: #222;
+      padding: 10px;
       border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+      width: 200px;
+      text-align: center;
     }
 
     .book-card img {
       width: 100%;
-      height: 300px;
+      height: 250px;
       object-fit: cover;
-    }
-
-    .book-info {
-      padding: 0px;
-      font-size: 20px;
-      margin-left: 10px;
-      margin-bottom: 0%;
-    }
-
-    .book-info h4 {
-      margin: 0;
-      margin-bottom: 0%;
-      margin-top: 0%;
+      border-radius: 10px;
     }
 
     .price {
-      color: #00ff99;
+      color: #0f0;
       font-weight: bold;
-      margin-bottom: 0%;
-      margin-top: 2%;
     }
 
-    .rating {
-      color: gold;
-      margin-bottom: 0%;
-      margin-top: 0%;
+    .stock.in {
+      color: #0f0;
     }
 
-    .stock {
-      color: #00cc66;
-      font-weight: bold;
-      margin-bottom: 0%;
-      margin-top: 2%;
+    .stock.out {
+      color: red;
     }
 
-    .view-btn {
-      margin-top: 0%;
+    .btn {
       display: block;
-      background-color: #8a2be2;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      text-decoration: none;
+      margin: 10px auto;
+      padding: 8px 12px;
+      border: none;
       border-radius: 5px;
-      margin: 10px;
+      cursor: pointer;
     }
 
-    @media (max-width: 768px) {
-      .main {
-        flex-direction: column;
-      }
-
-      .books {
-        margin-left: 0;
-      }
-
-      .sidebar {
-        width: 100%;
-      }
-    }
+    .btn.apply { background: purple; color: white; }
+    .btn.reset { background: #555; color: white; }
+    .btn.view  { background: #7b2cbf; color: white; }
   </style>
 </head>
-<body><h1>Welcome to Lia Bookstore</h1>
+<body>
+  <header>
+    <h1>LIA BOOKS</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Categories</a>
+      <a href="#">Contact Us</a>
+      <input type="text" placeholder="Search for books..." />
+      <span><a href="#">Login</a> | <a href="#">Register</a></span>
+    </nav>
+  </header>
 
-<header>
-  <div class="logo">LIA BOOKS</div>
-  <div class="nav-links">
-    <a href="#">Home</a>
-    <a href="#">Categories</a>
-    <a href="#">Contact Us</a>
-  </div>
-  <div class="top-right">
-    <input class="search-bar" type="text" placeholder="Find books at LIA's store..." />
-    <a href="#">Login</a>
-    <a href="#">Register</a>
-  </div>
-</header>
+  <div class="container">
+    <aside class="filters">
+      <h3>Filters</h3>
+      <label>Genre</label>
+      <select id="genre-filter">
+        <option value="">All Genres</option>
+        <option value="Fiction">Fiction</option>
+        <option value="Biography">Biography</option>
+      </select>
 
-<div class="main">
-  <div class="sidebar sidebar button">
-    <h3>Filters</h3>
-    <label>Genre</label>
-    <select id="genreFilter">
-      <option>All Genres</option>
-      <option>Fiction</option>
-      <option>Biography</option>
-      <option>Non-Fiction</option>
-      <option>Self-Help</option>
-    </select>
+      <label>Price Range</label>
+      <input type="number" id="min-price" placeholder="Min Price" />
+      <input type="number" id="max-price" placeholder="Max Price" />
 
-    <label>Book Type</label>
-    <select id="typeFilter">
-      <option>All Types</option>
-      <option>Physical</option>
-      <option>E-Book</option>
-    </select>
+      <button class="btn apply" onclick="applyFilters()">Apply Filters</button>
+      <button class="btn reset" onclick="fetchBooks()">Reset Filters</button>
+    </aside>
 
-    <label>Price Range</label>
-    <input type="number" id="minPrice" placeholder="Min Price">
-    <input type="number" id="maxPrice" placeholder="Max Price">
-
-    <label>Sort By</label>
-    <select id="sortBy">
-      <option value="title-asc">Title (A-Z)</option>
-      <option value="title-desc">Title (Z-A)</option>
-      <option value="price-asc">Price (Low-High)</option>
-      <option value="price-desc">Price (High-Low)</option>
-    </select>
-
-    <button onclick="applyFilters()">Apply Filters</button>
-    <button onclick="resetFilters()">Reset Filters</button>
-    <button  style="background-color: maroon;"onclick="addBooks()">Add Books</button>
-    <button  style="background-color: maroon;"onclick="removeBooks()">Remove Books</button>
+    <main class="book-list">
+      <!-- Books will be displayed here -->
+    </main>
   </div>
 
-  <div class="books" id="bookContainer"></div>
+  <script>
+    const apiUrl = "http://localhost:8080/api/books";
 
-</div>
-
-<script>
-  const books = [
-    { title: "Dune", category: "Fiction", img: "https://m.media-amazon.com/images/I/91zbi9M+mKL.jpg", rating: "⭐⭐⭐⭐⭐", price: 9.00, type: "Physical", inStock: true },
-    { title: "Educated", category: "Biography", img: "https://m.media-amazon.com/images/I/81WojUxbbFL.jpg", rating: "⭐⭐⭐⭐⭐", price: 10.20, type: "E-Book", inStock: true },
-    { title: "Steve Jobs", category: "Biography", img: "https://m.media-amazon.com/images/I/81VStYnDGrL.jpg", rating: "⭐⭐⭐⭐", price: 18.00, type: "Physical", inStock: true },
-    { title: "Mockingbird", category: "Fiction", img: "https://m.media-amazon.com/images/I/81gepf1eMqL.jpg", rating: "⭐⭐⭐⭐⭐", price: 11.00, type: "E-Book", inStock: false },
-    { title: "Becoming", category: "Biography", img: "https://m.media-amazon.com/images/I/81h2gWPTYJL.jpg", rating: "⭐⭐⭐⭐", price: 13.50, type: "E-Book", inStock: true },
-    { title: "1984", category: "Fiction", img: "https://m.media-amazon.com/images/I/71kxa1-0mfL.jpg", rating: "⭐⭐⭐⭐⭐", price: 10.00, type: "Physical", inStock: true },
-    { title: "The Great Gatsby", category: "Fiction", img: "https://m.media-amazon.com/images/I/71UypkUjStL.jpg", rating: "⭐⭐⭐⭐", price: 8.50, type: "Physical", inStock: true },
-    { title: "The Alchemist", category: "Fiction", img: "https://m.media-amazon.com/images/I/71aFt4+OTOL.jpg", rating: "⭐⭐⭐⭐⭐", price: 14.00, type: "E-Book", inStock: true },
-    { title: "Sapiens", category: "Non-Fiction", img: "https://m.media-amazon.com/images/I/713jIoMO3UL.jpg", rating: "⭐⭐⭐⭐⭐", price: 12.30, type: "Physical", inStock: true },
-    { title: "Atomic Habits", category: "Self-Help", img: "https://m.media-amazon.com/images/I/91bYsX41DVL.jpg", rating: "⭐⭐⭐⭐⭐", price: 15.60, type: "E-Book", inStock: true },
-    { title: "The Subtle Art ", category: "Self-Help", img: "https://m.media-amazon.com/images/I/71QKQ9mwV7L.jpg", rating: "⭐⭐⭐⭐", price: 11.99, type: "E-Book", inStock: false }
-  ];
-
-  function renderBooks(filteredBooks) {
-    const container = document.getElementById("bookContainer");
-    container.innerHTML = "";
-
-    if (filteredBooks.length === 0) {
-      container.innerHTML = "<p>No books match your filters.</p>";
-      return;
+    async function fetchBooks() {
+      const response = await fetch(apiUrl);
+      const books = await response.json();
+      displayBooks(books);
     }
 
-    filteredBooks.forEach(book => {
-      const div = document.createElement("div");
-      div.className = "book-card";
-      div.innerHTML = `
-        <img src="${book.img}" alt="${book.title}">
-        <div class="book-info">
-          <h4>${book.title} <span style="background: #6a5acd; padding: 3px 6px; border-radius: 5px; font-size: 12px;">${book.category}</span></h4>
-          <p class="rating">${book.rating}</p>
-          <p class="price">$${book.price.toFixed(2)}</p>
-          <p class="stock">${book.inStock ? "In Stock" : "Out of Stock"}</p>
-          <p style="color: #ffcc00; font-weight: bold;">Type: ${book.type}</p>
-        </div>
-        <a href="#" class="view-btn">View Details</a>
-      `;
-      container.appendChild(div);
-    });
-  }
+    function displayBooks(books) {
+      const bookList = document.querySelector(".book-list");
+      bookList.innerHTML = "";
 
-  function applyFilters() {
-    const genre = document.getElementById("genreFilter").value;
-    const type = document.getElementById("typeFilter").value;
-    const minPrice = parseFloat(document.getElementById("minPrice").value) || 0;
-    const maxPrice = parseFloat(document.getElementById("maxPrice").value) || Infinity;
-    const sort = document.getElementById("sortBy").value;
-
-    let filtered = books.filter(book => {
-      return (genre === "All Genres" || book.category === genre) &&
-             (type === "All Types" || book.type === type) &&
-             (book.price >= minPrice && book.price <= maxPrice);
-    });
-
-    if (sort === "title-asc") {
-      filtered.sort((a, b) => a.title.localeCompare(b.title));
-    } else if (sort === "title-desc") {
-      filtered.sort((a, b) => b.title.localeCompare(a.title));
-    } else if (sort === "price-asc") {
-      filtered.sort((a, b) => a.price - b.price);
-    } else if (sort === "price-desc") {
-      filtered.sort((a, b) => b.price - a.price);
+      books.forEach(book => {
+        const card = document.createElement("div");
+        card.className = "book-card";
+        card.innerHTML = `
+          <img src="${book.imageUrl}" alt="${book.name}">
+          <h4>${book.name}</h4>
+          <p>Category: ${book.category}</p>
+          <p class="price">$${book.price}</p>
+          <p class="stock ${book.inStock ? 'in' : 'out'}">
+            ${book.inStock ? 'In Stock' : 'Out of Stock'}
+          </p>
+          <button class="btn view">View Details</button>
+        `;
+        bookList.appendChild(card);
+      });
     }
 
-    renderBooks(filtered);
-  }
+    function applyFilters() {
+      const genre = document.getElementById("genre-filter").value;
+      const minPrice = parseFloat(document.getElementById("min-price").value) || 0;
+      const maxPrice = parseFloat(document.getElementById("max-price").value) || Infinity;
 
-  function resetFilters() {
-    document.getElementById("genreFilter").value = "All Genres";
-    document.getElementById("typeFilter").value = "All Types";
-    document.getElementById("minPrice").value = "";
-    document.getElementById("maxPrice").value = "";
-    document.getElementById("sortBy").value = "title-asc";
-    renderBooks(books);
-  }
+      fetch(apiUrl)
+        .then(res => res.json())
+        .then(books => {
+          const filtered = books.filter(book =>
+            (!genre || book.category === genre) &&
+            book.price >= minPrice &&
+            book.price <= maxPrice
+          );
+          displayBooks(filtered);
+        });
+    }
 
-  renderBooks(books);
-</script>
+    fetchBooks();
+  </script>
 </body>
 </html>
